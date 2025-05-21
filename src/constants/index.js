@@ -11,10 +11,6 @@ const navLinks = [
         name: "Skills",
         link: "#skills",
     },
-    {
-        name: "Testimonials",
-        link: "#testimonials",
-    },
 ];
 
 const words = [
@@ -196,51 +192,6 @@ const expLogos = [
     {
         name: "logo3",
         imgPath: "/images/logo3.png",
-    },
-];
-
-const testimonials = [
-    {
-        name: "Torin M",
-        mentions: "@torinM",
-        review:
-            "It was great working with Vishaal to design the suction wedge project. He took on a leadership and put maximum effort into his work, ensuring that the project was completed with high quality.",
-        imgPath: "/images/client1.png",
-    },
-    {
-        name: "Daniel M",
-        mentions: "@danielM",
-        review:
-            "Working with Vishaal was an absolute game-changer. His ability to simplify complex challenges and keep our team aligned made a huge impact on project delivery.",
-        imgPath: "/images/client3.png",
-    },
-    {
-        name: "Leo C",
-        mentions: "@leoC",
-        review:
-            "The commitment to quality and a problem-solving mindset made a noticeable difference throughout the project lifecycle.",
-        imgPath: "/images/client2.png",
-    },
-    {
-        name: "Aarav P",
-        mentions: "@aaravP",
-        review:
-            "Vishaal consistently brings fresh ideas and technical skill to every hackathon we’ve worked on together. His ability to quickly prototype and pivot under pressure is what sets him apart.",
-        imgPath: "/images/client5.png",
-    },
-    {
-        name: "Jia L",
-        mentions: "@jiaL",
-        review:
-            "What impressed me most was how Venkat balanced both leadership and listening. He knows when to take charge, and when to elevate the ideas of others.",
-        imgPath: "/images/client4.png",
-    },
-    {
-        name: "Bob T",
-        mentions: "@bobT",
-        review:
-            "His calm under pressure and collaborative spirit made him the glue of our team. Whether it was debugging at 2 AM or pitching to judges, Vishaal was all in.",
-        imgPath: "/images/client6.png",
     },
 ];
 
