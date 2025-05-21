@@ -33,24 +33,6 @@ const counterItems = [
 
 
 
-const abilities = [
-    {
-        imgPath: "/images/seo.png",
-        title: "Quality Focus",
-        desc: "Delivering high-quality results while maintaining attention to every detail.",
-    },
-    {
-        imgPath: "/images/chat.png",
-        title: "Growth Mindset",
-        desc: "Always seeking new challenges to sharpen technical skills and apply classroom knowledge to real-world problems."
-    },
-    {
-        imgPath: "/images/time.png",
-        title: "On-Time Delivery",
-        desc: "Accustomed to balancing multiple responsibilities while delivering quality results under time constraints.",
-    },
-];
-
 const techStackImgs = [
     {
         name: "React Developer",
@@ -182,7 +164,6 @@ const socialImgs = [
 
 export {
     words,
-    abilities,
     counterItems,
     expCards,
     expLogos,
