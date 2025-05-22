@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import TitleHeader from "../components/TitleHeader";
-import TechStackLazy from "../components/TechStackLazy";
+import TechStackLazy from "../sections/TechStackLazy";
 import { techStackIcons } from "../constants";
 
 const TechStack = () => {
@@ -28,7 +28,7 @@ const TechStack = () => {
         <div id="skills" className="flex-center section-padding">
             <div className="w-full h-full md:px-10 px-5">
                 <TitleHeader
-                    title="How I Can Contribute & My Key Skills"
+                    title="Skills"
                     sub="🤝 What I Bring to the Table"
                 />
                 <div className="tech-grid">
