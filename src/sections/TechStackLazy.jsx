@@ -1,6 +1,7 @@
 // components/TechCardLazy.jsx
 import { useInView } from "react-intersection-observer";
-import TechIconCardExperience from "./tech_logos/TechIconCardExperience";
+import TechIconCardExperience from "../components/tech_logos/TechIconCardExperience";
+
 
 const TechStackLazy = ({ techStackIcon }) => {
     const { ref, inView } = useInView({ triggerOnce: true });
