@@ -133,10 +133,12 @@ const socialImgs = [
     {
         name: "insta",
         imgPath: "/images/insta.png",
+        link: "https://www.instagram.com/vishxxl_27/"
     },
     {
         name: "linkedin",
         imgPath: "/images/linkedin.png",
+        path: "https://www.linkedin.com/in/vishaalgopalan/"
     },
 ];
 
