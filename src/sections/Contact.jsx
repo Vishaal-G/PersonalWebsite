@@ -55,7 +55,7 @@ const Contact = () => {
                                 className="w-full flex flex-col gap-7"
                             >
                                 <div>
-                                    <label htmlFor="name">Your name</label>
+                                    <label htmlFor="name">Your Name</label>
                                     <input
                                         type="text"
                                         id="name"
