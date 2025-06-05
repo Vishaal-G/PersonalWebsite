@@ -138,7 +138,7 @@ const socialImgs = [
     {
         name: "linkedin",
         imgPath: "/images/linkedin.png",
-        path: "https://www.linkedin.com/in/vishaalgopalan/"
+        link: "https://www.linkedin.com/in/vishaalgopalan/"
     },
 ];
 
