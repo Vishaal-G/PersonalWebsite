@@ -59,13 +59,19 @@ export default function BlogPage() {
 										<h2 className="text-xl font-semibold mb-2">{post.title}</h2>
 										<p className="text-muted-foreground">{post.excerpt}</p>
 									</CardContent>
-									<CardFooter className="p-6 pt-0">
-										<Button variant="outline" className="w-full" asChild>
-											<Link href={`/blog/${post.slug}`}>
-												Read More <ArrowRight className="ml-2 h-4 w-4" />
-											</Link>
+									<CardFooter className="p-6 pt-0 relative z-10 pointer-events-auto">
+										<Button
+											variant="outline"
+											className="w-full pointer-events-auto"
+											onClick={(e) => {
+												e.stopPropagation();
+												window.open(post.url, '_blank', 'noopener,noreferrer');
+											}}
+										>
+											Read More <ArrowRight className="ml-2 h-4 w-4" />
 										</Button>
 									</CardFooter>
+
 								</Card>
 							</motion.div>
 						))}

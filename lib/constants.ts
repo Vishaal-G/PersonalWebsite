@@ -207,6 +207,7 @@ export type BlogPost = {
 	author: string;
 	image: string;
 	slug: string;
+	url: string;
 };
 
 export const blogPosts: BlogPost[] = [
@@ -217,6 +218,7 @@ export const blogPosts: BlogPost[] = [
 		author: 'Vishaal Gopalan',
 		image: 'images/blog1.png',
 		slug: 'options-trading-for-dummies',
+		url: 'https://medium.com/@vishaaltor/options-trading-for-dummies-503add42f935'
 	},
 	{
 		title: 'The Deutsch-Jozsaa Problem',
@@ -225,6 +227,7 @@ export const blogPosts: BlogPost[] = [
 		author: 'Vishaal Gopalan',
 		image: 'images/blog2.png',
 		slug: 'the-deutsch-jozsaa-problem',
+		url: 'https://medium.com/@vishaaltor/the-deutsch-jozsa-problem-d5db351f3255'
 	},
 	{
 		title: 'Entangling Protein Through Quantum Simulations',
@@ -233,5 +236,6 @@ export const blogPosts: BlogPost[] = [
 		author: 'Vishaal Gopalan',
 		image: 'images/blog3.png',
 		slug: 'entangling-protein-through-quantum-simulations',
+		url: 'https://medium.com/@vishaaltor/entangling-protein-through-quantum-simulations-273617292c9f'
 	},
 ];
