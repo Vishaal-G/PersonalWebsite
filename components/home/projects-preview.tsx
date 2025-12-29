@@ -13,7 +13,6 @@ import { projects } from '@/lib/constants';
 import { staggerContainer, fadeInScale } from '@/lib/motion';
 
 export function ProjectsPreview() {
-	// Only show the first 3 projects in the preview
 	const previewProjects = projects.slice(0, 3);
 
 	return (
@@ -47,9 +46,11 @@ export function ProjectsPreview() {
 										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 									/>
 								</div>
+
 								<CardContent className="flex-grow p-6">
 									<h3 className="font-bold text-xl mb-2">{project.title}</h3>
 									<p className="text-muted-foreground mb-4">{project.description}</p>
+
 									<div className="flex flex-wrap gap-2">
 										{project.tags.map((tag, tagIndex) => (
 											<Badge key={tagIndex} variant="secondary">
@@ -58,21 +59,27 @@ export function ProjectsPreview() {
 										))}
 									</div>
 								</CardContent>
-								<CardFooter className="p-6 pt-0 gap-2">
+
+								<CardFooter className="p-6 pt-0 gap-2 relative z-10">
 									{project.link && (
-										<Button size="sm" variant="outline" asChild>
-											<Link href={project.link} target="_blank" rel="noreferrer">
-												<ExternalLink className="h-4 w-4 mr-2" />
-												Demo
-											</Link>
+										<Button
+											size="sm"
+											variant="outline"
+											onClick={() => window.open(project.link, '_blank')}
+										>
+											<ExternalLink className="h-4 w-4 mr-2" />
+											Demo
 										</Button>
 									)}
+
 									{project.repo && (
-										<Button size="sm" variant="outline" asChild>
-											<Link href={project.repo} target="_blank" rel="noreferrer">
-												<Github className="h-4 w-4 mr-2" />
-												Repo
-											</Link>
+										<Button
+											size="sm"
+											variant="outline"
+											onClick={() => window.open(project.repo, '_blank')}
+										>
+											<Github className="h-4 w-4 mr-2" />
+											Repo
 										</Button>
 									)}
 								</CardFooter>

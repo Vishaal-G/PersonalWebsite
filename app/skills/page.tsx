@@ -9,18 +9,18 @@ import { fadeIn, staggerContainer } from '@/lib/motion';
 
 export default function SkillsPage() {
 	const technicalSkills = skills.filter(skill => skill.category === 'technical');
-	const softwareSkills = skills.filter(skill => skill.category === 'software');
+	const softwareSkills = skills.filter(skill => skill.category === 'frameworks');
 	const softSkills = skills.filter(skill => skill.category === 'soft');
 	const languageSkills = skills.filter(skill => skill.category === 'language');
 
 	const SkillCategory = ({
 		title,
-		skills,
+		items,
 		icon,
 		delay
 	}: {
 		title: string;
-		skills: typeof technicalSkills;
+		items: typeof technicalSkills;
 		icon: React.ReactNode;
 		delay: number;
 	}) => (
@@ -31,13 +31,17 @@ export default function SkillsPage() {
 						{icon}
 						<h2 className="text-2xl font-semibold">{title}</h2>
 					</div>
+
 					<div className="space-y-4">
-						{skills.map((skill, index) => (
+						{items.map((skill, index) => (
 							<div key={index}>
 								<div className="flex justify-between mb-1">
 									<span>{skill.name}</span>
-									<span className="text-muted-foreground">{skill.level}/10</span>
+									<span className="text-muted-foreground">
+										{skill.level}/10
+									</span>
 								</div>
+
 								<div className="skill-bar">
 									<motion.div
 										className="skill-progress"
@@ -54,6 +58,7 @@ export default function SkillsPage() {
 			</Card>
 		</motion.div>
 	);
+
 
 	return (
 		<div className="py-16 md:py-24">
@@ -74,25 +79,25 @@ export default function SkillsPage() {
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						<SkillCategory
 							title="Technical Skills"
-							skills={technicalSkills}
+							items={technicalSkills}
 							icon={<Cpu className="h-6 w-6 text-primary" />}
 							delay={0.3}
 						/>
 						<SkillCategory
-							title="Software Proficiency"
-							skills={softwareSkills}
+							title="Frameworks & Libraries"
+							items={softwareSkills}
 							icon={<Code2 className="h-6 w-6 text-secondary" />}
 							delay={0.4}
 						/>
 						<SkillCategory
 							title="Soft Skills"
-							skills={softSkills}
+							items={softSkills}
 							icon={<Brain className="h-6 w-6 text-accent" />}
 							delay={0.5}
 						/>
 						<SkillCategory
 							title="Languages"
-							skills={languageSkills}
+							items={languageSkills}
 							icon={<Languages className="h-6 w-6 text-primary" />}
 							delay={0.6}
 						/>

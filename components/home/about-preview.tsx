@@ -28,7 +28,7 @@ export function AboutPreview() {
 						className="relative h-[400px] rounded-lg overflow-hidden"
 					>
 						<Image
-							src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg"
+							src="/images/about.jpg"
 							alt="Engineer portrait"
 							fill
 							className="object-cover"
@@ -54,19 +54,19 @@ export function AboutPreview() {
 							<Card className="card-gradient">
 								<CardContent className="p-4">
 									<h4 className="font-semibold">Education</h4>
-									<p className="text-sm text-muted-foreground">B.S. Mechanical Engineering</p>
+									<p className="text-sm text-muted-foreground">B.S. Computer Engineering</p>
 								</CardContent>
 							</Card>
 							<Card className="card-gradient">
 								<CardContent className="p-4">
 									<h4 className="font-semibold">Experience</h4>
-									<p className="text-sm text-muted-foreground">3+ Years</p>
+									<p className="text-sm text-muted-foreground">1+ Years</p>
 								</CardContent>
 							</Card>
 							<Card className="card-gradient">
 								<CardContent className="p-4">
 									<h4 className="font-semibold">Projects</h4>
-									<p className="text-sm text-muted-foreground">10+ Completed</p>
+									<p className="text-sm text-muted-foreground">4+ Completed</p>
 								</CardContent>
 							</Card>
 							<Card className="card-gradient">

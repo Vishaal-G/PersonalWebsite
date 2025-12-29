@@ -2,8 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Github, ExternalLink } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -15,15 +14,8 @@ export default function ProjectsPage() {
 	return (
 		<div className="py-16 md:py-24">
 			<div className="container">
-				<motion.div
-					variants={staggerContainer()}
-					initial="hidden"
-					animate="show"
-				>
-					<motion.div
-						variants={fadeInScale(0.2)}
-						className="text-center mb-12"
-					>
+				<motion.div variants={staggerContainer()} initial="hidden" animate="show">
+					<motion.div variants={fadeInScale(0.2)} className="text-center mb-12">
 						<h1 className="text-4xl font-bold mb-4">Projects</h1>
 						<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
 							A showcase of my engineering projects, demonstrating practical application
@@ -46,11 +38,14 @@ export default function ProjectsPage() {
 											fill
 											className="object-cover rounded-t-lg"
 											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+											priority={index < 3}
 										/>
 									</div>
+
 									<CardContent className="flex-grow p-6">
 										<h3 className="font-bold text-xl mb-2">{project.title}</h3>
 										<p className="text-muted-foreground mb-4">{project.description}</p>
+
 										<div className="flex flex-wrap gap-2">
 											{project.tags.map((tag, tagIndex) => (
 												<Badge key={tagIndex} variant="secondary">
@@ -59,21 +54,27 @@ export default function ProjectsPage() {
 											))}
 										</div>
 									</CardContent>
-									<CardFooter className="p-6 pt-0 gap-2">
+
+									<CardFooter className="p-6 pt-0 gap-2 relative z-10">									
 										{project.link && (
-											<Button size="sm" variant="outline" asChild>
-												<Link href={project.link} target="_blank" rel="noreferrer">
-													<ExternalLink className="h-4 w-4 mr-2" />
-													Demo
-												</Link>
+											<Button
+												size="sm"
+												variant="outline"
+												onClick={() => window.open(project.link, '_blank')}
+											>
+												<ExternalLink className="h-4 w-4 mr-2" />
+												Demo
 											</Button>
 										)}
+
 										{project.repo && (
-											<Button size="sm" variant="outline" asChild>
-												<Link href={project.repo} target="_blank" rel="noreferrer">
-													<Github className="h-4 w-4 mr-2" />
-													Repo
-												</Link>
+											<Button
+												size="sm"
+												variant="outline"
+												onClick={() => window.open(project.repo, '_blank')}
+											>
+												<Github className="h-4 w-4 mr-2" />
+												Repo
 											</Button>
 										)}
 									</CardFooter>

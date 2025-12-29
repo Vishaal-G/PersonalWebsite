@@ -21,9 +21,7 @@ export default function AboutPage() {
 					<motion.div variants={fadeIn('right', 0.3)} className="space-y-6">
 						<h1 className="text-4xl font-bold">About Me</h1>
 						<p className="text-lg text-muted-foreground">
-							I am a passionate engineering student with a focus on innovation and problem-solving.
-							My academic journey has equipped me with strong technical skills and a deep understanding
-							of engineering principles.
+							I am a second-year Computer Engineering student at the University of Toronto with a strong interest in machine learning and intelligent systems.
 						</p>
 						<div className="space-y-4">
 							<h2 className="text-2xl font-semibold">My Journey</h2>
@@ -42,7 +40,7 @@ export default function AboutPage() {
 
 					<motion.div variants={fadeIn('left', 0.3)} className="relative h-[500px]">
 						<Image
-							src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg"
+							src="/images/about.jpg"
 							alt="Professional photo"
 							fill
 							className="object-cover rounded-lg"
@@ -62,8 +60,7 @@ export default function AboutPage() {
 							<CardContent className="p-6">
 								<h3 className="text-xl font-semibold mb-4">Education</h3>
 								<p className="text-muted-foreground">
-									Currently pursuing a Bachelor's degree in Engineering with a focus on
-									practical applications and innovative solutions.
+									Currently pursuing a Bachelor's degree in Computer Engineering and minor in Artificial Intelligence Engineering.
 								</p>
 							</CardContent>
 						</Card>

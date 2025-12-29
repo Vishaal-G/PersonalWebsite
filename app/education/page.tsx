@@ -44,11 +44,7 @@ export default function EducationPage() {
 												<h2 className="text-2xl font-semibold">{edu.degree}</h2>
 												<p className="text-primary">{edu.field}</p>
 											</div>
-											{edu.gpa && (
-												<p className="text-lg font-semibold mt-2 md:mt-0">
-													GPA: {edu.gpa}
-												</p>
-											)}
+
 										</div>
 
 										<div className="space-y-3">

@@ -18,7 +18,7 @@ export function SkillsPreview() {
 		.slice(0, 3);
 
 	const topSoftwareSkills = skills
-		.filter(skill => skill.category === 'software')
+		.filter(skill => skill.category === 'frameworks')
 		.sort((a, b) => b.level - a.level)
 		.slice(0, 3);
 
@@ -78,7 +78,7 @@ export function SkillsPreview() {
 					>
 						<Card>
 							<CardContent className="p-6">
-								<h3 className="text-xl font-bold mb-4">Software Proficiency</h3>
+								<h3 className="text-xl font-bold mb-4">Frameworks & Libraries</h3>
 								<div className="space-y-4">
 									{topSoftwareSkills.map((skill, index) => (
 										<div key={index}>
