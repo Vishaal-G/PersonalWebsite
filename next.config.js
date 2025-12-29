@@ -1,21 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: 'export',
+	// IMPORTANT: remove output: 'export' unless you specifically want a static export
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	images: {
+		unoptimized: true,
+	},
 	devIndicators: false,
-	images: { unoptimized: true },
-	webpack: (config, { isServer }) => {
-		// Disable cache for both client and server builds
+
+	// This "experimental" block is not needed and often causes build instability.
+	// Remove it.
+	// experimental: {},
+
+	// If you were disabling cache to avoid issues, keep it:
+	webpack: (config) => {
 		config.cache = false;
 		return config;
 	},
-	// Add experimental features to handle client pages properly
-	experimental: {
-		appDir: true,
-		serverActions: true
-	}
 };
 
 module.exports = nextConfig;
