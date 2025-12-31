@@ -109,7 +109,7 @@ export const projects: Project[] = [
 	{
 		title: 'Piano Tiles',
 		description:
-			'Built an AI content generation system that processes news data and produces tone-adaptive rewritten articles using cloud-based machine learning.',
+			'Replicated the piano tiles video game on an FPGA using Verilog for hardware design and a shell script for game logic and user interaction.',
 		image: '/images/project2.png',
 		tags: ['Verilog', 'Shell', 'FPGA'],
 		link: '/images/demo.mp4',
