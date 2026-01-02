@@ -32,7 +32,7 @@ export default function AboutPage() {
 							</p>
 						</div>
 						<Button className="mt-6" asChild>
-							<a href="/cv.pdf" download>
+							<a href="/Vishaal_Gopalan_Resume.pdf" download>
 								Download CV <ArrowDownCircle className="ml-2 h-4 w-4" />
 							</a>
 						</Button>
