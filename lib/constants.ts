@@ -98,6 +98,16 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
+		title: 'N3XU$',
+		description:
+			'Designed an AI-powered academic dashboard that consolidates course management and technical feedback into a single interface.',
+		image: '/images/nexus.jpg',
+		tags: ['Python', 'FastAPI', 'Gemini API', 'PostgreSQL', 'Drizzle ORM'],
+		link: '/images/nexusDemo.mp4',
+		repo: 'https://github.com/Vishaal-G/UofTHacks26',
+	},
+
+	{
 		title: 'Moodify',
 		description:
 			'Designed and built an AI-powered music recommendation system that analyzes user emotions and generates personalized Spotify playlists in real time.',
