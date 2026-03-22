@@ -64,7 +64,7 @@ export const experiences: Experience[] = [
 		company: 'Solaris',
 		location: 'Toronto, Canada',
 		startDate: 'June 2025',
-		endDate: 'Present',
+		endDate: 'August 2025',
 		description: [
 			'Implemented foundational backend system used to manage and deliver healthcare facility data for the Toronto area.',
 			'Defined data models based on the schema including facilities, regions, and location fields',
@@ -77,7 +77,7 @@ export const experiences: Experience[] = [
 		company: 'UofT Engineering Student Consulting Association',
 		location: 'Toronto, Canada',
 		startDate: 'Jan 2025',
-		endDate: 'Present',
+		endDate: 'May 2026',
 		description: [
 			'Designed a full-stack internal management system, replacing manual file-based processes with a database-driven architecture.',
 			'Developed backend APIs using Python and FastAPI, integrated with Supabase PostgreSQL to enable role-based authentication and event management.',

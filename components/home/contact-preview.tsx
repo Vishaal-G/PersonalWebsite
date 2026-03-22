@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SectionHeader } from '@/components/ui/section-header';
+import { submitContactForm } from '@/lib/contact';
 import { fadeIn } from '@/lib/motion';
 
 export function ContactPreview() {
@@ -16,6 +17,8 @@ export function ContactPreview() {
 		email: '',
 		message: '',
 	});
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		setFormState({
@@ -24,10 +27,23 @@ export function ContactPreview() {
 		});
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		alert('Form submitted! This is a demo - no actual email is sent.');
-		setFormState({ name: '', email: '', message: '' });
+		setIsSubmitting(true);
+		setStatus(null);
+
+		try {
+			await submitContactForm(formState);
+			setFormState({ name: '', email: '', message: '' });
+			setStatus({ type: 'success', message: 'Your message has been sent successfully.' });
+		} catch (error) {
+			setStatus({
+				type: 'error',
+				message: error instanceof Error ? error.message : 'Unable to send your message.',
+			});
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -78,8 +94,19 @@ export function ContactPreview() {
 										className="min-h-[150px]"
 									/>
 								</div>
-								<Button type="submit" className="w-full">
-									Send Message <Send className="ml-2 h-4 w-4" />
+								{status && (
+									<p
+										className={
+											status.type === 'success'
+												? 'text-sm text-accent'
+												: 'text-sm text-destructive'
+										}
+									>
+										{status.message}
+									</p>
+								)}
+								<Button type="submit" className="w-full" disabled={isSubmitting}>
+									{isSubmitting ? 'Sending...' : 'Send Message'} <Send className="ml-2 h-4 w-4" />
 								</Button>
 							</form>
 						</div>
