@@ -1,12 +1,13 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { SiteBackgroundShell } from '@/components/scene/site-background-shell';
 
-const inter = Inter({ subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: 'Engineering Portfolio',
@@ -21,12 +22,17 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/256/12539/12539811.png" type="image/x-icon" />
-			<body className={inter.className}>
+			<body className={spaceGrotesk.className}>
 				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-					<div className="relative min-h-screen flex flex-col">
-						<Navbar />
-						<main className="flex-grow pt-16">{children}</main>
-						<Footer />
+					<div className="site-shell">
+						<div className="site-gradient" />
+						<div className="site-grid" />
+						<SiteBackgroundShell />
+						<div className="relative z-10 flex min-h-screen flex-col">
+							<Navbar />
+							<main className="flex-grow pt-24">{children}</main>
+							<Footer />
+						</div>
 					</div>
 				</ThemeProvider>
 			</body>

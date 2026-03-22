@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { X, Menu, ChevronDown } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 
 import { siteConfig } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
@@ -35,18 +35,23 @@ export function Navbar() {
 
 	return (
 		<motion.header
-			className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
-				}`}
+			className="fixed inset-x-0 top-0 z-50 px-4 pt-4"
 			initial={{ y: -100 }}
 			animate={{ y: 0 }}
 			transition={{ duration: 0.5 }}
 		>
-			<div className="container flex h-16 items-center justify-between py-4">
+			<div
+				className={`mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between rounded-full border px-5 transition-all duration-300 md:px-6 ${
+					isScrolled
+						? 'border-white/12 bg-background/78 shadow-[0_20px_55px_-32px_rgba(0,0,0,0.9)] backdrop-blur-2xl'
+						: 'border-white/10 bg-background/42 backdrop-blur-xl'
+				}`}
+			>
 				<div className="flex items-center gap-6 md:gap-10">
 					<Link href="/" className="flex items-center space-x-2">
 						<motion.div
 							whileHover={{ scale: 1.05 }}
-							className="font-bold text-2xl text-gradient"
+							className="text-2xl font-bold tracking-[-0.08em] text-gradient"
 						>
 							Portfolio
 						</motion.div>
@@ -69,12 +74,12 @@ export function Navbar() {
 				<div className="md:hidden">
 					<Sheet>
 						<SheetTrigger asChild>
-							<Button variant="ghost" size="icon">
+							<Button variant="ghost" size="icon" className="border-white/10 bg-white/[0.04]">
 								<Menu className="h-5 w-5" />
 								<span className="sr-only">Toggle menu</span>
 							</Button>
 						</SheetTrigger>
-						<SheetContent className="flex flex-col p-6">
+						<SheetContent className="flex flex-col border-white/10 bg-background/95 p-6 backdrop-blur-2xl">
 							<div className="flex items-center justify-between mb-8">
 								<Link href="/" className="flex items-center space-x-2">
 									<span className="font-bold text-2xl text-gradient">Portfolio</span>
@@ -126,7 +131,7 @@ export function Navbar() {
 				{/* Desktop actions */}
 				<div className="hidden md:flex items-center gap-4">
 					<Link href="/contact">
-						<Button>Contact Me</Button>
+						<Button className="shadow-[0_18px_40px_-24px_rgba(88,211,255,0.9)]">Contact Me</Button>
 					</Link>
 				</div>
 			</div>

@@ -1,6 +1,9 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	// IMPORTANT: remove output: 'export' unless you specifically want a static export
+	outputFileTracingRoot: path.resolve(__dirname),
 	eslint: {
 		ignoreDuringBuilds: true,
 	},

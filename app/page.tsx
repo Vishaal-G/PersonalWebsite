@@ -13,7 +13,6 @@ export default function Home() {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		// Simulate loading time
 		const timer = setTimeout(() => {
 			setIsLoading(false);
 		}, 2000);
@@ -26,34 +25,34 @@ export default function Home() {
 			<AnimatePresence>
 				{isLoading && (
 					<motion.div
-						className="fixed inset-0 z-50 flex items-center justify-center bg-background"
+						className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-xl"
 						initial={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.5 }}
 					>
 						<motion.div
-							className="flex flex-col items-center"
+							className="section-shell flex flex-col items-center px-12 py-10"
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5 }}
 						>
 							<motion.div
-								className="w-16 h-16 border-t-4 border-primary border-solid rounded-full"
+								className="h-16 w-16 rounded-full border-2 border-solid border-white/10 border-t-primary"
 								animate={{ rotate: 360 }}
 								transition={{
 									repeat: Infinity,
 									duration: 1,
-									ease: "linear"
+									ease: 'linear',
 								}}
 							/>
 							<motion.p
-								className="mt-4 text-lg"
+								className="mt-4 text-lg text-muted-foreground"
 								animate={{
 									opacity: [0.5, 1, 0.5],
 								}}
 								transition={{
 									repeat: Infinity,
-									duration: 1.5
+									duration: 1.5,
 								}}
 							>
 								Loading...
