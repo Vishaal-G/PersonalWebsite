@@ -67,8 +67,8 @@ export const experiences: Experience[] = [
 		endDate: 'August 2025',
 		description: [
 			'Implemented foundational backend system used to manage and deliver healthcare facility data for the Toronto area.',
-			'Defined data models based on the schema including facilities, regions, and location fields',
-			'Implemented hospitals API endpoint to serve GTA healthcare facility data in a read-only format',
+			'Defined data models based on the schema including facilities, regions, and location fields.',
+			'Implemented hospitals API endpoint to serve GTA healthcare facility data in a read-only format.',
 		],
 		technologies: ['Python', 'PyTorch', 'FastAPI', 'Git'],
 	},
@@ -167,7 +167,7 @@ export const education: Education[] = [
 		startDate: 'Sep 2019',
 		endDate: 'Jun 2024',
 		achievements: [
-			'Dean’s List Honor Roll (2020-2024)',
+			"Dean's List Honor Roll (2020-2024)",
 			'CSMC Competition Finalist',
 		],
 	},

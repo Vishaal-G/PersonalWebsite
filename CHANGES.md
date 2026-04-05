@@ -1,0 +1,29 @@
+# Baseball Stadium Portfolio Changes
+
+- `app/page.tsx` - Replaced the old homepage entry with a client-only stadium experience so the site opens directly into the new baseball world.
+- `app/layout.tsx` - Updated metadata to match the new stadium portfolio presentation.
+- `lib/stadium-data.ts` - Added the stadium zone map, focus presets, labels, and external action metadata that drive the scene and overlays.
+- `types/index.ts` - Extended the shared panel typing to support the new scoreboard hero panel.
+- `components/scene/StadiumExperience.tsx` - Added the fullscreen Three.js canvas, loading flow, tooltip, panel layer, and toast host for the stadium experience.
+- `components/scene/StadiumScene.tsx` - Assembled the baseball stadium scene with sky, lighting, field, crowd, interaction, and orbit camera systems.
+- `components/scene/StadiumLights.tsx` - Added the bright daytime sunlight and fill lighting for the stadium theme.
+- `components/scene/StadiumSky.tsx` - Added the open-sky backdrop and clouds to sell the outdoor ballpark setting.
+- `components/scene/StadiumField.tsx` - Built the infield, grass, mound, bases, foul lines, and dirt textures for the playable stadium floor.
+- `components/scene/StadiumCrowd.tsx` - Added stylized seating and animated crowd motion so the park feels alive.
+- `components/scene/StadiumScoreboard.tsx` - Added the animated hero scoreboard that surfaces name, counts, and rotating game-day copy from portfolio content.
+- `components/scene/StadiumZone.tsx` - Added the reusable interaction wrapper for clickable stadium objects and areas.
+- `components/scene/StadiumZones.tsx` - Mapped the scoreboard, dugouts, mound, outfield wall, bleachers, press box, foul poles, and bat/home plate to portfolio sections and actions.
+- `components/scene/StadiumCameraRig.tsx` - Added orbit controls, cinematic fly-to focus behavior, and reset logic when panels open and close.
+- `components/scene/StadiumInteraction.tsx` - Added hover detection, click handling, external link actions, resume download behavior, and toast triggers.
+- `components/ui/StadiumLoadingScreen.tsx` - Added the scoreboard-style intro boot sequence from the PRD.
+- `components/ui/StadiumTooltip.tsx` - Added cursor-following stadium labels for hovered zones and actions.
+- `components/ui/StadiumContentPanel.tsx` - Added the bright slide-up content drawer with green header styling for all stadium sections.
+- `components/ui/stadium-panels/panel-shell.tsx` - Added the shared bright-card layout used by each stadium content panel.
+- `components/ui/stadium-panels/HeroPanel.tsx` - Added the scoreboard hero content sourced from constants and site links.
+- `components/ui/stadium-panels/ProjectsPanel.tsx` - Added the project panel sourced from `lib/constants.ts`.
+- `components/ui/stadium-panels/SkillsPanel.tsx` - Added the skills lineup panel sourced from `lib/constants.ts`.
+- `components/ui/stadium-panels/AboutPanel.tsx` - Added the about panel for the pitcher's mound zone.
+- `components/ui/stadium-panels/ExperiencePanel.tsx` - Added the experience panel sourced from `lib/constants.ts`.
+- `components/ui/stadium-panels/EducationPanel.tsx` - Added the education panel sourced from `lib/constants.ts`.
+- `components/ui/stadium-panels/ContactPanel.tsx` - Added the contact panel and live form submit flow inside the new stadium UI.
+- `components/ui/ContentPanel.tsx` - Updated the legacy panel lookup to stay type-safe after the new `hero` panel key was introduced.
