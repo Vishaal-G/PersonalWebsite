@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Github, Linkedin, Mail, Phone } from 'lucide-react';
+import { FileText, Github, Linkedin, Mail, Phone } from 'lucide-react';
 
 import { submitContactForm } from '@/lib/contact';
 import { siteConfig } from '@/lib/constants';
@@ -34,7 +34,8 @@ export function ContactPanel() {
 
 	return (
 		<div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-			<StadiumPanelSection eyebrow="Contact Dugout" title="Reach Out">
+			<StadiumPanelSection eyebrow="Contact Dugout" title="Let's Talk">
+				<p className="mb-3">Got a project in mind, a question, or just want to say hi? I&apos;d love to hear from you.</p>
 				<div className="space-y-3">
 					<Link href={`mailto:${siteConfig.links.email}`} className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
 						<Mail className="h-4 w-4 text-[#2e7d32]" /> {siteConfig.links.email}
@@ -48,10 +49,13 @@ export function ContactPanel() {
 					<Link href={siteConfig.links.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
 						<Linkedin className="h-4 w-4 text-[#2e7d32]" /> LinkedIn
 					</Link>
+					<Link href="/images/Vishaal_Software_Resume.pdf" download className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
+						<FileText className="h-4 w-4 text-[#2e7d32]" /> Download Resume
+					</Link>
 				</div>
 			</StadiumPanelSection>
 
-			<StadiumPanelSection title="Contact Form">
+			<StadiumPanelSection title="Send Me a Message">
 				<form className="space-y-3" onSubmit={onSubmit}>
 					<input
 						className="w-full rounded-2xl border border-[#cfe2cf] bg-[#f7fcf7] px-4 py-3 text-[#17351f] outline-none focus:border-[#2e7d32]"

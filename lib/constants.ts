@@ -60,17 +60,15 @@ export type Experience = {
 
 export const experiences: Experience[] = [
 	{
-		title: 'Backend Engineer Intern',
-		company: 'Solaris',
+		title: 'Software Engineering Intern',
+		company: 'CIBC',
 		location: 'Toronto, Canada',
-		startDate: 'June 2025',
-		endDate: 'August 2025',
+		startDate: 'May 2026',
+		endDate: 'August 2026',
 		description: [
-			'Implemented foundational backend system used to manage and deliver healthcare facility data for the Toronto area.',
-			'Defined data models based on the schema including facilities, regions, and location fields.',
-			'Implemented hospitals API endpoint to serve GTA healthcare facility data in a read-only format.',
+			'Built the iOS client and analytics/user-identification pipeline for CIBC Spark, a new in-app banking chatbot, plus automated UI-testing tooling that cut down manual QA effort.',
 		],
-		technologies: ['Python', 'PyTorch', 'FastAPI', 'Git'],
+		technologies: ['Swift', 'Kotlin Multiplatform', 'JSON', 'Bash'],
 	},
 	{
 		title: 'Executive Software Engineer',
@@ -84,6 +82,17 @@ export const experiences: Experience[] = [
 			'Integrated Google Photos API for event photo hosting, Google Drive API for application file access, and Supabase Email/Gmail API for automated notifications.',
 		],
 		technologies: ['Python', 'PostgreSQL', 'Google Photos API', 'Git'],
+	},
+	{
+		title: 'Backend Engineer Intern',
+		company: 'Solaris',
+		location: 'Toronto, Canada',
+		startDate: 'May 2025',
+		endDate: 'August 2025',
+		description: [
+			'Built a Python backend with a RESTful API powering real-time wait times and online triage across 100+ healthcare facilities in the Greater Toronto Area.',
+		],
+		technologies: ['Python', 'PyTorch', 'FastAPI', 'Git'],
 	},
 ];
 
@@ -139,6 +148,7 @@ export const projects: Project[] = [
 export type Education = {
 	degree: string;
 	field: string;
+	minor?: string;
 	institution: string;
 	location: string;
 	startDate: string;
@@ -149,8 +159,9 @@ export type Education = {
 
 export const education: Education[] = [
 	{
-		degree: 'Bachelor of Engineering',
+		degree: 'Bachelor of Applied Science',
 		field: 'Computer Engineering',
+		minor: 'Artificial Intelligence Engineering',
 		institution: 'University Of Toronto',
 		location: 'Toronto, Canada',
 		startDate: 'Sep 2024',
@@ -188,6 +199,8 @@ export const skills: Skill[] = [
 	{ name: 'C++', level: 7, category: 'technical' },
 	{ name: 'Verilog', level: 8, category: 'technical' },
 	{ name: 'C', level: 6, category: 'technical' },
+	{ name: 'Swift', level: 8, category: 'technical' },
+	{ name: 'Kotlin', level: 8, category: 'technical' },
 
 	// Frameworks Skills
 	{ name: 'PyTorch', level: 9, category: 'frameworks' },

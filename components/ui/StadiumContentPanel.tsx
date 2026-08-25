@@ -4,37 +4,24 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ArrowRight, X } from 'lucide-react';
 
-import { getPanelMeta } from '@/lib/stadium-data';
+import { getNextPanel, getPanelMeta } from '@/lib/stadium-data';
 import { useStore } from '@/store/useStore';
-import { HeroPanel } from '@/components/ui/stadium-panels/HeroPanel';
 import { ProjectsPanel } from '@/components/ui/stadium-panels/ProjectsPanel';
 import { SkillsPanel } from '@/components/ui/stadium-panels/SkillsPanel';
 import { AboutPanel } from '@/components/ui/stadium-panels/AboutPanel';
 import { ExperiencePanel } from '@/components/ui/stadium-panels/ExperiencePanel';
-import { EducationPanel } from '@/components/ui/stadium-panels/EducationPanel';
 import { ContactPanel } from '@/components/ui/stadium-panels/ContactPanel';
-import type { PanelKey } from '@/types';
 
 const PANEL_LOOKUP = {
-	hero: HeroPanel,
+	hero: ExperiencePanel,
 	projects: ProjectsPanel,
 	skills: SkillsPanel,
 	about: AboutPanel,
-	experience: ExperiencePanel,
-	education: EducationPanel,
 	contact: ContactPanel,
 } as const;
 
-const JOURNEY: Exclude<PanelKey, null>[] = ['hero', 'about', 'skills', 'projects', 'education', 'experience', 'contact'];
-
-function getNextPanel(panel: PanelKey) {
-	if (!panel) return null;
-	const index = JOURNEY.indexOf(panel);
-	return index >= 0 && index < JOURNEY.length - 1 ? JOURNEY[index + 1] : null;
-}
-
 export function StadiumContentPanel() {
-	const { activePanel, panelOpen, setActivePanel, setPanelOpen, setAutoRotating } = useStore();
+	const { activePanel, panelOpen, visitedPanels, setActivePanel, setPanelOpen, setAutoRotating } = useStore();
 	const [contentReady, setContentReady] = useState(false);
 
 	const close = useCallback(() => {
@@ -79,19 +66,23 @@ export function StadiumContentPanel() {
 					<div className="flex h-full flex-col">
 						<div className="flex items-start justify-between gap-6 border-b border-white/10 px-6 py-5 text-white md:px-10">
 							<div className="max-w-3xl">
-								<p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d9efdb]">Base Path Story</p>
+								<p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d9efdb]">Vishaal&apos;s Base Path</p>
 								<h2 className="mt-3 text-4xl font-bold tracking-[-0.04em]">{meta?.label ?? activePanel}</h2>
 								<p className="mt-3 text-sm leading-6 text-white/82 md:text-base">{meta?.subtitle ?? 'Portfolio content from the selected zone.'}</p>
 							</div>
 							<div className="flex items-center gap-3">
-								{nextMeta ? (
+								{nextMeta && nextPanel && visitedPanels.includes(nextPanel) ? (
 									<button
-										onClick={() => nextPanel && setActivePanel(nextPanel)}
+										onClick={() => setActivePanel(nextPanel)}
 										className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/18"
 									>
 										Next: {nextMeta.label}
 										<ArrowRight className="h-4 w-4" />
 									</button>
+								) : nextMeta ? (
+									<span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/55">
+										🔒 Swing to unlock {nextMeta.label}
+									</span>
 								) : null}
 								<button onClick={close} className="grid h-11 w-11 place-items-center rounded-full border border-white/18 bg-white/10 text-white transition hover:bg-white/18" aria-label="Close panel">
 									<X className="h-5 w-5" />

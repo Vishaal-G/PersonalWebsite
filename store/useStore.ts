@@ -2,33 +2,33 @@
 
 import { create } from 'zustand';
 
-import type { PortfolioObjectId } from '@/lib/immersive-room';
 import type { PanelKey } from '@/types';
+
+type VisitedPanel = Exclude<PanelKey, null>;
+type SwingFeedback = 'hit' | 'early' | 'late' | 'no-swing' | null;
 
 type StoreState = {
 	panelOpen: boolean;
 	hoveredKey: string | null;
 	autoRotating: boolean;
 	isAutoRotating: boolean;
-	introVisible: boolean;
-	hintVisible: boolean;
-	hasEntered: boolean;
-	locked: boolean;
-	overlayVisible: boolean;
-	hoveredObject: PortfolioObjectId | null;
 	activePanel: PanelKey;
-	visitedObjects: PortfolioObjectId[];
+	visitedPanels: VisitedPanel[];
+	miniGameOpen: boolean;
+	swingFeedback: SwingFeedback;
+	swingSignal: number;
+	pitchStartedAt: number;
+	instructionsOpen: boolean;
 	setPanelOpen: (value: boolean) => void;
 	setHoveredKey: (value: string | null) => void;
 	setAutoRotating: (value: boolean) => void;
-	setIntroVisible: (value: boolean) => void;
-	setHintVisible: (value: boolean) => void;
-	setHasEntered: (value: boolean) => void;
-	setLocked: (value: boolean) => void;
-	setOverlayVisible: (value: boolean) => void;
-	setHoveredObject: (value: PortfolioObjectId | null) => void;
 	setActivePanel: (value: PanelKey) => void;
-	markVisited: (value: PortfolioObjectId) => void;
+	markPanelVisited: (value: VisitedPanel) => void;
+	setMiniGameOpen: (value: boolean) => void;
+	setSwingFeedback: (value: SwingFeedback) => void;
+	requestSwing: () => void;
+	setPitchStartedAt: (value: number) => void;
+	setInstructionsOpen: (value: boolean) => void;
 };
 
 export const useStore = create<StoreState>((set) => ({
@@ -36,28 +36,24 @@ export const useStore = create<StoreState>((set) => ({
 	hoveredKey: null,
 	autoRotating: false,
 	isAutoRotating: false,
-	introVisible: true,
-	hintVisible: true,
-	hasEntered: false,
-	locked: false,
-	overlayVisible: false,
-	hoveredObject: null,
 	activePanel: null,
-	visitedObjects: [],
-	setPanelOpen: (value) => set({ panelOpen: value, overlayVisible: value }),
-	setHoveredKey: (value) => set({ hoveredKey: value, hoveredObject: value as PortfolioObjectId | null }),
+	visitedPanels: ['about', 'contact'],
+	miniGameOpen: false,
+	swingFeedback: null,
+	swingSignal: 0,
+	pitchStartedAt: 0,
+	instructionsOpen: true,
+	setPanelOpen: (value) => set({ panelOpen: value }),
+	setHoveredKey: (value) => set({ hoveredKey: value }),
 	setAutoRotating: (value) => set({ isAutoRotating: value, autoRotating: value }),
-	setIntroVisible: (value) => set({ introVisible: value, hasEntered: !value }),
-	setHintVisible: (value) => set({ hintVisible: value }),
-	setHasEntered: (value) => set({ hasEntered: value }),
-	setLocked: (value) => set({ locked: value }),
-	setOverlayVisible: (value) => set({ overlayVisible: value }),
-	setHoveredObject: (value) => set({ hoveredObject: value, hoveredKey: value }),
 	setActivePanel: (value) => set({ activePanel: value }),
-	markVisited: (value) =>
+	markPanelVisited: (value) =>
 		set((state) => ({
-			visitedObjects: state.visitedObjects.includes(value)
-				? state.visitedObjects
-				: [...state.visitedObjects, value],
+			visitedPanels: state.visitedPanels.includes(value) ? state.visitedPanels : [...state.visitedPanels, value],
 		})),
+	setMiniGameOpen: (value) => set({ miniGameOpen: value }),
+	setSwingFeedback: (value) => set({ swingFeedback: value }),
+	requestSwing: () => set((state) => ({ swingSignal: state.swingSignal + 1 })),
+	setPitchStartedAt: (value) => set({ pitchStartedAt: value }),
+	setInstructionsOpen: (value) => set({ instructionsOpen: value }),
 }));

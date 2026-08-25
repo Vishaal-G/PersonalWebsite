@@ -5,13 +5,16 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { toast } from 'sonner';
 
+import { getPanelMeta } from '@/lib/stadium-data';
 import { useStore } from '@/store/useStore';
+import type { PanelKey } from '@/types';
 
 export function StadiumInteraction() {
 	const { camera, scene, gl } = useThree();
 	const raycaster = useRef(new THREE.Raycaster());
 	const pointer = useRef(new THREE.Vector2(10, 10));
-	const { panelOpen, setActivePanel, setHoveredKey, setPanelOpen, setAutoRotating } = useStore();
+	const { panelOpen, miniGameOpen, visitedPanels, setActivePanel, setHoveredKey, setPanelOpen, setAutoRotating, markPanelVisited } =
+		useStore();
 
 	useEffect(() => {
 		const handleMove = (event: PointerEvent) => {
@@ -27,7 +30,7 @@ export function StadiumInteraction() {
 		};
 
 		const handleClick = () => {
-			if (panelOpen) return;
+			if (panelOpen || miniGameOpen) return;
 			raycaster.current.setFromCamera(pointer.current, camera);
 			const hits = raycaster.current.intersectObjects(scene.children, true);
 			const hit = hits.find((entry) => entry.object.userData.interactive);
@@ -60,8 +63,14 @@ export function StadiumInteraction() {
 			}
 
 			if (data.panelKey) {
-				setActivePanel(data.panelKey as never);
-				window.setTimeout(() => setPanelOpen(true), 420);
+				const key = data.panelKey as Exclude<PanelKey, null>;
+				if (visitedPanels.includes(key)) {
+					setActivePanel(key);
+					markPanelVisited(key);
+					window.setTimeout(() => setPanelOpen(true), 420);
+				} else {
+					toast(`Hit the ball to make your way to ${getPanelMeta(key)?.label ?? 'this base'} — swing at it with Play Ball!`);
+				}
 			}
 		};
 
@@ -73,10 +82,10 @@ export function StadiumInteraction() {
 			gl.domElement.removeEventListener('pointerleave', handleLeave);
 			gl.domElement.removeEventListener('click', handleClick);
 		};
-	}, [camera, gl, panelOpen, scene, setActivePanel, setAutoRotating, setHoveredKey, setPanelOpen]);
+	}, [camera, gl, panelOpen, miniGameOpen, visitedPanels, scene, setActivePanel, setAutoRotating, setHoveredKey, setPanelOpen, markPanelVisited]);
 
 	useFrame(() => {
-		if (panelOpen) {
+		if (panelOpen || miniGameOpen) {
 			setHoveredKey(null);
 			gl.domElement.style.cursor = 'default';
 			return;

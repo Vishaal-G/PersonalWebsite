@@ -22,6 +22,8 @@ export function StadiumScoreboard() {
 	const tickerOffset = useRef(0);
 	const hoveredKey = useStore((state) => state.hoveredKey);
 	const activePanel = useStore((state) => state.activePanel);
+	const miniGameOpen = useStore((state) => state.miniGameOpen);
+	const swingFeedback = useStore((state) => state.swingFeedback);
 
 	const texture = useMemo(() => {
 		const canvas = document.createElement('canvas');
@@ -63,7 +65,21 @@ export function StadiumScoreboard() {
 		ctx.fillRect(70, 376, 884, 78);
 		const ticker = `  ${siteConfig.links.github.replace('https://', '')}  |  ${siteConfig.links.linkedin.replace('https://www.', '')}  |  ${projects.length} PROJECTS  |  ${skills.length} SKILLS  |  ${experiences.length} EXPERIENCES  |  `;
 		ledText(ctx, ticker, 944 - tickerOffset.current, 425, 22, '#f6e69b');
-		ledText(ctx, 'PLAY BALL', 440, 122, 24, Math.sin(clock.elapsedTime * 3) > 0 ? '#f6c34e' : '#7b6848');
+
+		const missText = swingFeedback === 'early' ? 'TOO EARLY' : swingFeedback === 'late' ? 'TOO LATE' : 'STRIKE';
+		const playBallText = miniGameOpen ? (swingFeedback === 'hit' ? 'CONTACT!' : swingFeedback ? missText : 'SWING!') : 'PLAY BALL';
+		const playBallColor = miniGameOpen
+			? swingFeedback === 'hit'
+				? '#8fe0a0'
+				: swingFeedback
+				? '#f4a2a2'
+				: Math.sin(clock.elapsedTime * 6) > 0
+				? '#ffffff'
+				: '#f6c34e'
+			: Math.sin(clock.elapsedTime * 3) > 0
+			? '#f6c34e'
+			: '#7b6848';
+		ledText(ctx, playBallText, 440, 122, 24, playBallColor);
 
 		texture.needsUpdate = true;
 	});

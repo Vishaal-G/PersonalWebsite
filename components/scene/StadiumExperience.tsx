@@ -7,12 +7,20 @@ import * as THREE from 'three';
 
 import { StadiumScene } from '@/components/scene/StadiumScene';
 import { StadiumContentPanel } from '@/components/ui/StadiumContentPanel';
+import { StadiumControlsLegend } from '@/components/ui/StadiumControlsLegend';
 import { StadiumGuideOverlay } from '@/components/ui/StadiumGuideOverlay';
 import { StadiumLoadingScreen } from '@/components/ui/StadiumLoadingScreen';
+import { StadiumProgressTrack } from '@/components/ui/StadiumProgressTrack';
+import { StadiumTooltip } from '@/components/ui/StadiumTooltip';
+import { PlayBallOverlay } from '@/components/ui/PlayBallOverlay';
+import { HomeRunCelebration } from '@/components/ui/HomeRunCelebration';
 import { defaultCamera } from '@/lib/stadium-data';
+import { useStore } from '@/store/useStore';
 
 export default function StadiumExperience() {
 	const [loading, setLoading] = useState(true);
+	const panelOpen = useStore((state) => state.panelOpen);
+	const miniGameOpen = useStore((state) => state.miniGameOpen);
 
 	return (
 		<div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', background: '#8fc3ea' }}>
@@ -34,7 +42,12 @@ export default function StadiumExperience() {
 			</Canvas>
 			{loading ? <StadiumLoadingScreen onDone={() => setLoading(false)} /> : null}
 			{!loading ? <StadiumGuideOverlay /> : null}
+			{!loading && !panelOpen && !miniGameOpen ? <StadiumTooltip /> : null}
+			{!loading && !panelOpen && !miniGameOpen ? <StadiumProgressTrack /> : null}
 			{!loading ? <StadiumContentPanel /> : null}
+			{!loading ? <PlayBallOverlay /> : null}
+			{!loading ? <HomeRunCelebration /> : null}
+			{!loading ? <StadiumControlsLegend /> : null}
 			<Toaster theme="light" position="top-center" />
 		</div>
 	);

@@ -33,7 +33,6 @@ export function Footer() {
 			links: [
 				{ title: 'Experience', href: '/experience' },
 				{ title: 'Projects', href: '/projects' },
-				{ title: 'Certificates', href: '/certificates' },
 			],
 		},
 		{
@@ -41,7 +40,7 @@ export function Footer() {
 			links: [
 				{ title: 'Blog', href: '/blog' },
 				{ title: 'Contact', href: '/contact' },
-				{ title: 'Resume', href: '#', download: true },
+				{ title: 'Resume', href: '/images/Vishaal_Software_Resume.pdf', download: true },
 			],
 		},
 	];
@@ -93,18 +92,10 @@ export function Footer() {
 
 					<Separator className="my-8" />
 
-					<div className="flex flex-col items-center justify-between gap-4 text-sm sm:flex-row">
+					<div className="flex flex-col items-center justify-center gap-4 text-sm sm:flex-row">
 						<p className="text-muted-foreground">
 							&copy; {currentYear} Engineering Portfolio. All rights reserved.
 						</p>
-						<div className="flex gap-4">
-							<Link href="/privacy" className="text-muted-foreground transition-colors hover:text-primary">
-								Privacy Policy
-							</Link>
-							<Link href="/terms" className="text-muted-foreground transition-colors hover:text-primary">
-								Terms of Service
-							</Link>
-						</div>
 					</div>
 				</div>
 			</div>
