@@ -21,7 +21,7 @@ const PANEL_LOOKUP = {
 } as const;
 
 export function StadiumContentPanel() {
-	const { activePanel, panelOpen, visitedPanels, setActivePanel, setPanelOpen, setAutoRotating } = useStore();
+	const { activePanel, panelOpen, setActivePanel, setPanelOpen, setAutoRotating, markPanelVisited } = useStore();
 	const [contentReady, setContentReady] = useState(false);
 
 	const close = useCallback(() => {
@@ -71,18 +71,17 @@ export function StadiumContentPanel() {
 								<p className="mt-3 text-sm leading-6 text-white/82 md:text-base">{meta?.subtitle ?? 'Portfolio content from the selected zone.'}</p>
 							</div>
 							<div className="flex items-center gap-3">
-								{nextMeta && nextPanel && visitedPanels.includes(nextPanel) ? (
+								{nextMeta && nextPanel ? (
 									<button
-										onClick={() => setActivePanel(nextPanel)}
+										onClick={() => {
+											setActivePanel(nextPanel);
+											markPanelVisited(nextPanel);
+										}}
 										className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/18"
 									>
 										Next: {nextMeta.label}
 										<ArrowRight className="h-4 w-4" />
 									</button>
-								) : nextMeta ? (
-									<span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/55">
-										🔒 Swing to unlock {nextMeta.label}
-									</span>
 								) : null}
 								<button onClick={close} className="grid h-11 w-11 place-items-center rounded-full border border-white/18 bg-white/10 text-white transition hover:bg-white/18" aria-label="Close panel">
 									<X className="h-5 w-5" />

@@ -37,7 +37,7 @@ export const useStore = create<StoreState>((set) => ({
 	autoRotating: false,
 	isAutoRotating: false,
 	activePanel: null,
-	visitedPanels: ['about', 'contact'],
+	visitedPanels: [],
 	miniGameOpen: false,
 	swingFeedback: null,
 	swingSignal: 0,

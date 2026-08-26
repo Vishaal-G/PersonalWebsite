@@ -20,16 +20,12 @@ export function StadiumControlsLegend() {
 						<span className="font-bold text-[#2d5d39]">Look around —</span> drag to orbit, scroll or pinch to zoom.
 					</li>
 					<li>
-						<span className="font-bold text-[#2d5d39]">To move base to base —</span> hit the Play Ball button and swing when the
-						marker hits the gold zone. That&apos;s the only way to learn more about me.
+						<span className="font-bold text-[#2d5d39]">Explore a base —</span> click any sign to open that section instantly.
 					</li>
 					<li>
-						<span className="font-bold text-[#2d5d39]">Already been there? —</span> click any base you&apos;ve unlocked anytime to
-						look again.
-					</li>
-					<li>
-						<span className="font-bold text-[#2d5d39]">Just want to read? —</span> use &quot;Skip to simple view&quot; in the corner
-						— you can learn everything about me without playing the game.
+						<span className="font-bold text-[#2d5d39]">Hitting is optional —</span> click the gold Play Ball button near home
+						plate to start, then swing when the marker hits the gold zone. Hitting the ball is what rounds the bases for you — or
+						skip it entirely and just click signs instead.
 					</li>
 				</ul>
 				<button

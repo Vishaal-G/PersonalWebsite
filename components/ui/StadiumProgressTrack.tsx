@@ -1,7 +1,5 @@
 'use client';
 
-import { toast } from 'sonner';
-
 import { JOURNEY, getPanelMeta } from '@/lib/stadium-data';
 import { useStore } from '@/store/useStore';
 
@@ -12,11 +10,7 @@ export function StadiumProgressTrack() {
 	const setPanelOpen = useStore((state) => state.setPanelOpen);
 	const markPanelVisited = useStore((state) => state.markPanelVisited);
 
-	const goTo = (key: (typeof JOURNEY)[number], visited: boolean) => {
-		if (!visited) {
-			toast(`Hit the ball to make your way to ${getPanelMeta(key)?.label ?? 'this base'} — swing at it with Play Ball!`);
-			return;
-		}
+	const goTo = (key: (typeof JOURNEY)[number]) => {
 		setActivePanel(key);
 		markPanelVisited(key);
 		window.setTimeout(() => setPanelOpen(true), 420);
@@ -35,9 +29,9 @@ export function StadiumProgressTrack() {
 					return (
 						<button
 							key={key}
-							onClick={() => goTo(key, visited)}
-							title={visited ? meta.label : `${meta.label} — hit the ball to unlock`}
-							aria-label={visited ? `Jump to ${meta.label}` : `${meta.label} locked — swing to unlock`}
+							onClick={() => goTo(key)}
+							title={meta.label}
+							aria-label={`Jump to ${meta.label}`}
 							className={[
 								'grid h-9 w-9 place-items-center rounded-full border transition',
 								current

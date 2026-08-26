@@ -10,7 +10,7 @@ import { StadiumZone } from '@/components/scene/StadiumZone';
 import { useHoverGlow } from '@/hooks/useHoverGlow';
 import { useStore } from '@/store/useStore';
 
-function makeSignTexture(title: string, subtitle: string, tint: string, order: number) {
+function makeSignTexture(title: string, subtitle: string, tint: string, badge: string) {
 	const canvas = document.createElement('canvas');
 	canvas.width = 640;
 	canvas.height = 280;
@@ -44,10 +44,10 @@ function makeSignTexture(title: string, subtitle: string, tint: string, order: n
 	ctx.arc(64, 64, 36, 0, Math.PI * 2);
 	ctx.stroke();
 	ctx.fillStyle = '#f9fbf5';
-	ctx.font = '700 46px Trebuchet MS';
+	ctx.font = '700 44px Trebuchet MS';
 	ctx.textAlign = 'center';
 	ctx.textBaseline = 'middle';
-	ctx.fillText(String(order), 64, 68);
+	ctx.fillText(badge, 64, 68);
 	ctx.textBaseline = 'alphabetic';
 
 	const texture = new THREE.CanvasTexture(canvas);
@@ -60,17 +60,17 @@ function SignBoard({
 	subtitle,
 	tint,
 	hoverKey,
-	order,
+	badge,
 	scale = 1,
 }: {
 	title: string;
 	subtitle: string;
 	tint: string;
 	hoverKey: string;
-	order: number;
+	badge: string;
 	scale?: number;
 }) {
-	const texture = useMemo(() => makeSignTexture(title, subtitle, tint, order), [subtitle, tint, title, order]);
+	const texture = useMemo(() => makeSignTexture(title, subtitle, tint, badge), [subtitle, tint, title, badge]);
 	const ref = useHoverGlow(hoverKey);
 
 	return (
@@ -172,7 +172,7 @@ function BasePortal({
 					<meshStandardMaterial color="#385842" roughness={0.92} />
 				</mesh>
 				<mesh position={[0, 0.94, 0.01]} rotation={[-0.06, 0, 0]}>
-					<SignBoard title={title} subtitle={subtitle} tint={color} hoverKey={hoverKey} order={order} scale={boardScale} />
+					<SignBoard title={title} subtitle={subtitle} tint={color} hoverKey={hoverKey} badge={String(order)} scale={boardScale} />
 				</mesh>
 			</group>
 			<mesh position={[0, 0.4, 0]}>
@@ -244,7 +244,7 @@ function ContactDugout() {
 				<meshStandardMaterial color="#385842" roughness={0.92} />
 			</mesh>
 			<mesh position={[0, 1.54, 0.2]} rotation={[-0.06, 0, 0]}>
-				<SignBoard title="CONTACT" subtitle="dugout" tint="#c9e7c0" hoverKey="contact" order={5} scale={0.78} />
+				<SignBoard title="CONTACT" subtitle="dugout" tint="#c9e7c0" hoverKey="contact" badge="5" scale={0.78} />
 			</mesh>
 			<mesh position={[0, 0.7, 0]}>
 				<boxGeometry args={[2.4, 2.2, 1.7]} />

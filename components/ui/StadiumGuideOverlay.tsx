@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 import { getNextPanel, getPanelMeta } from '@/lib/stadium-data';
 import { useStore } from '@/store/useStore';
 
@@ -9,9 +7,8 @@ export function StadiumGuideOverlay() {
 	const activePanel = useStore((state) => state.activePanel);
 	const panelOpen = useStore((state) => state.panelOpen);
 	const miniGameOpen = useStore((state) => state.miniGameOpen);
-	const visitedPanels = useStore((state) => state.visitedPanels);
-	const setMiniGameOpen = useStore((state) => state.setMiniGameOpen);
 	const setInstructionsOpen = useStore((state) => state.setInstructionsOpen);
+	const setMiniGameOpen = useStore((state) => state.setMiniGameOpen);
 
 	if (panelOpen || miniGameOpen) return null;
 
@@ -39,23 +36,14 @@ export function StadiumGuideOverlay() {
 				</p>
 				<p className="mt-1 text-sm text-[#4a6150]">
 					{nextMeta
-						? nextBase && visitedPanels.includes(nextBase)
-							? `Click the ${nextMeta.label.toLowerCase()} sign anytime — it's already unlocked.`
-							: `Hit Play Ball below and swing to reach ${nextMeta.label}. Already-visited signs can be clicked anytime.`
+						? `Click the ${nextMeta.label.toLowerCase()} sign to head there — or, just for fun, hit the Play Ball button near home plate.`
 						: 'Feel free to revisit any base, or say hello from the contact dugout.'}
 				</p>
 			</div>
 
-			<Link
-				href="/fallback"
-				className="pointer-events-auto absolute bottom-4 left-4 rounded-full border border-[#d8e4d6] bg-[rgba(249,251,245,0.9)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#2d5d39] shadow-[0_20px_40px_-28px_rgba(0,0,0,0.35)] backdrop-blur-sm transition hover:bg-white"
-			>
-				Skip to simple view →
-			</Link>
-
 			<button
 				onClick={() => setMiniGameOpen(true)}
-				className="pointer-events-auto absolute bottom-4 right-4 flex items-center gap-2 rounded-full bg-[#f1c14b] px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.24em] text-[#4a340c] shadow-[0_20px_44px_-20px_rgba(241,193,75,0.85)] transition hover:brightness-105 active:scale-95"
+				className="pointer-events-auto absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full bg-[#f1c14b] px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.24em] text-[#4a340c] shadow-[0_20px_44px_-20px_rgba(241,193,75,0.85)] transition hover:brightness-105 active:scale-95"
 			>
 				⚾ Play Ball
 			</button>
