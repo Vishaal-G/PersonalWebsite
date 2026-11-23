@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = "Vishaal Gopalan — a baseball stadium portfolio you can explore";
+export const alt = "Vishaal Gopalan — Computer Engineering @ University of Toronto";
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -63,7 +63,7 @@ export default function OpengraphImage() {
 						padding: '0 80px',
 					}}
 				>
-					A baseball-stadium portfolio you can explore
+					Computer Engineering @ University of Toronto
 				</div>
 				<div
 					style={{
@@ -76,7 +76,7 @@ export default function OpengraphImage() {
 						textTransform: 'uppercase',
 					}}
 				>
-					Computer Engineering · AI · Backend
+					Backend · iOS · Applied ML
 				</div>
 			</div>
 		),

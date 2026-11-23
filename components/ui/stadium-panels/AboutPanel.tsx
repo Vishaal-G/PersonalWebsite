@@ -11,8 +11,8 @@ export function AboutPanel() {
 			<StadiumPanelSection eyebrow="First Base" title="About Me">
 				<p>
 					I&apos;m a Computer Engineering student at the University of Toronto, minoring in Artificial Intelligence
-					Engineering. I like building intelligent tools, strong backend systems, and interfaces that feel polished
-					instead of purely functional.
+					Engineering. I&apos;ve interned as a software engineer at CIBC and Solaris, and I like building backend
+					systems, mobile clients, and applied ML tools that actually ship.
 				</p>
 				<p className="mt-3">
 					My work usually sits at the intersection of AI, applied engineering, and product thinking. I like ambitious ideas

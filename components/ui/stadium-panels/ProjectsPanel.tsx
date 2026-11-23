@@ -13,9 +13,9 @@ export function ProjectsPanel() {
 			<p className="text-sm text-[#3e5b45]">A few things I&apos;ve built that I&apos;m proud of — click through for code or a live demo.</p>
 			<div className="grid gap-4 lg:grid-cols-2">
 				{projects.map((project) => (
-					<StadiumPanelSection key={project.title} eyebrow="Third Base" title={project.title}>
+					<StadiumPanelSection key={project.title} title={project.title}>
 						<div className="relative mb-4 h-40 overflow-hidden rounded-[1.25rem] border border-[#d6e9d6]">
-							<Image src={project.image} alt={project.title} fill className="object-cover" />
+							<Image src={project.image} alt={project.title} fill unoptimized className="object-cover" />
 						</div>
 						<p>{project.description}</p>
 						<div className="mt-4 flex flex-wrap gap-2">
@@ -31,9 +31,14 @@ export function ProjectsPanel() {
 									<Github className="h-4 w-4" /> GitHub
 								</Link>
 							) : null}
+							{project.video ? (
+								<Link className="inline-flex items-center gap-2 rounded-full border border-[#2e7d32] px-4 py-2 text-[#2e7d32]" href={project.video} target="_blank" rel="noreferrer">
+									<ArrowUpRight className="h-4 w-4" /> Demo Video
+								</Link>
+							) : null}
 							{project.link ? (
 								<Link className="inline-flex items-center gap-2 rounded-full border border-[#2e7d32] px-4 py-2 text-[#2e7d32]" href={project.link} target="_blank" rel="noreferrer">
-									<ArrowUpRight className="h-4 w-4" /> Live / Demo
+									<ArrowUpRight className="h-4 w-4" /> Live Site
 								</Link>
 							) : null}
 						</div>

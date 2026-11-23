@@ -41,7 +41,7 @@ export function ContactPanel() {
 						<Mail className="h-4 w-4 text-[#2e7d32]" /> {siteConfig.links.email}
 					</Link>
 					<Link href={siteConfig.links.phone} className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
-						<Phone className="h-4 w-4 text-[#2e7d32]" /> +1 416 907 5950
+						<Phone className="h-4 w-4 text-[#2e7d32]" /> {siteConfig.links.phoneDisplay}
 					</Link>
 					<Link href={siteConfig.links.github} target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
 						<Github className="h-4 w-4 text-[#2e7d32]" /> GitHub
@@ -49,8 +49,8 @@ export function ContactPanel() {
 					<Link href={siteConfig.links.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
 						<Linkedin className="h-4 w-4 text-[#2e7d32]" /> LinkedIn
 					</Link>
-					<Link href="/images/Vishaal_Software_Resume.pdf" download className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
-						<FileText className="h-4 w-4 text-[#2e7d32]" /> Download Resume
+					<Link href={siteConfig.links.resume} target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl bg-[#f7fcf7] px-4 py-3 text-[#17351f]">
+						<FileText className="h-4 w-4 text-[#2e7d32]" /> View Resume
 					</Link>
 				</div>
 			</StadiumPanelSection>

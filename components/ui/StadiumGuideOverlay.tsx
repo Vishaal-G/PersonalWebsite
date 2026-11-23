@@ -21,6 +21,14 @@ export function StadiumGuideOverlay() {
 				<p className="text-[12px] font-semibold uppercase tracking-[0.34em] text-[#eef7ef]">Vishaal Gopalan</p>
 			</div>
 
+			<a
+				href="/portfolio"
+				title="Open the simple, scrollable version of the portfolio"
+				className="pointer-events-auto absolute left-16 top-20 flex h-9 items-center rounded-full border border-[rgba(229,238,225,0.88)] bg-[rgba(20,45,31,0.84)] px-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white shadow-[0_20px_40px_-28px_rgba(0,0,0,0.5)] backdrop-blur-md transition hover:bg-[rgba(20,45,31,0.95)]"
+			>
+				Simple view &rarr;
+			</a>
+
 			<button
 				onClick={() => setInstructionsOpen(true)}
 				aria-label="Show instructions"
